@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ==========================================
+   Dark Theme (Default)
+   ========================================== */
+:root {
+  --bright-bg: #09090b;
+  --bright-surface: #111113;
+  --bright-elevated: #18181b;
+  --bright-border: rgba(255, 255, 255, 0.06);
+  --bright-accent: #818cf8;
+  --bright-accent-hover: #a5b4fc;
+  --bright-success: #34d399;
+  --bright-warning: #fbbf24;
+  --bright-danger: #f87171;
+  --bright-text: #fafafa;
+  --bright-muted: #a1a1aa;
+  --bright-dim: #52525b;
+}
+
+/* ==========================================
+   Light Theme
+   ========================================== */
+html.light {
+  --bright-bg: #fafafa;
+  --bright-surface: #ffffff;
+  --bright-elevated: #f4f4f5;
+  --bright-border: rgba(0, 0, 0, 0.08);
+  --bright-accent: #6366f1;
+  --bright-accent-hover: #4f46e5;
+  --bright-success: #10b981;
+  --bright-warning: #f59e0b;
+  --bright-danger: #ef4444;
+  --bright-text: #09090b;
+  --bright-muted: #71717a;
+  --bright-dim: #a1a1aa;
+}
+
+html.light body {
+  color: var(--bright-text);
+}
+
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border-color: var(--bright-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+html.light .score-bar-gradient {
+  opacity: 0.85;
+}
+
+/* ==========================================
+   Scrollbar
+   ========================================== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bright-dim) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--bright-dim);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--bright-muted);
+}
+
+/* ==========================================
+   Base
+   ========================================== */
+body {
+  background-color: var(--bright-bg);
+  color: var(--bright-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================
+   Card Styles
+   ========================================== */
+.glass-card {
+  background: rgba(17, 17, 19, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--bright-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Score bar gradient */
+.score-bar-gradient {
+  background: linear-gradient(90deg,
+    #34d399 0%,
+    #34d399 25%,
+    #fbbf24 50%,
+    #f87171 75%,
+    #ef4444 100%
+  );
+}
+
+/* ==========================================
+   Animations
+   ========================================== */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes threat-glow {
+  0%, 100% { box-shadow: 0 0 4px currentColor; }
+  50% { box-shadow: 0 0 10px currentColor; }
+}
+
+.animate-threat-glow {
+  animation: threat-glow 2s ease-in-out infinite;
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.feed-item-enter {
+  animation: slide-in-left 0.2s ease-out;
+}
+
+@keyframes chat-fade-in {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-line {
+  animation: chat-fade-in 0.15s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.2s ease-out;
+}
